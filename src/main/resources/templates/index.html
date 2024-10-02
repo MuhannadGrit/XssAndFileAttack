@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>XSS Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="container">
+    <h1>XSS Test</h1>
+    <form method="post" action="/test">
+        <input type="text" name="input" placeholder="Enter some text" />
+        <button type="submit">Skicka</button>
+    </form>
+    <p th:utext="${message}"></p>
+
+    <h1>File Download Demo</h1>
+    <form action="/download" method="get">
+        <label for="filename">Enter file name to download:</label><br>
+        <input type="text" id="filename" name="filename" placeholder="Enter file name" /><br><br>
+        <input type="submit" value="Download">
+    </form>
+
+    <p>Try entering the name of a file located in the "files/" folder, like <b>test.txt</b>.</p>
+    <p>For testing directory traversal, you could try entering <b>../../etc/passwd</b> (only for demo purposes to show security flaw).</p>
+</div>
+</body>
+</html>
